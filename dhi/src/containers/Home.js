@@ -1,82 +1,52 @@
-import React from 'react';
-import './Home.css';
-// import ReactDOM from 'react-dom';
-import {Container, Box, Button} from '@material-ui/core';
-// import {}  from '@material-ui/core';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React from "react";
+import "./Home.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Header from "./Header";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
+import Space from "./space";
+import Time from "./time";
 
-function Space() {
-  return <h2>Space</h2>;
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box p={3}>{children}</Box>}
+    </div>
+  );
 }
 
-function Time() {
-  return <h2>Time</h2>;
-}
-
-// function Users() {
-//   return <h2>Users</h2>;
-// }
-
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
 
 function Home() {
   return (
-    <Container maxWidth="lg">
-    {/* // <div className="App"> */}
-      <header className="App-header">
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <Box color="text.primary" clone>
-        <Button />
-        </Box>
-          
-      </header>
-
-
-
+    <>
+      <Header />
 
       <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Space</Link>
-            </li>
-            <li>
-              <Link to="/time">Time</Link>
-            </li>
-          </ul>
-        </nav>
+        <Link to="/">Space</Link> || <Link to="/time">Time</Link>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/time">
+          <Route path="/Time">
             <Time />
           </Route>
           <Route path="/">
             <Space />
           </Route>
         </Switch>
-      </div>
-    </Router>
-    
-    </Container>
+      </Router>
+    </>
   );
 }
-
 export default Home;
