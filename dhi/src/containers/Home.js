@@ -29,7 +29,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function Home() {
+function Home() {  
   return (
     <>
       <Header />
