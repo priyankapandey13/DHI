@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "100%",
     },
   },
 }));
@@ -56,10 +56,10 @@ function Time() {
 
   return (
     <Container maxWidth="lg">
-      <h2>Time</h2>
+      {/* <h2>Time</h2>
       <p>
         In this graph data is fetched acording to the location input by user.
-      </p>
+      </p> */}
       <Box component="div">
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
@@ -81,15 +81,16 @@ function Time() {
       </Box>
       <Box component="div">
         <ComposedChart
-          width={1100}
+          width={840}
           height={400}
           data={Graphdata}
           margin={{
             top: 20,
-            right: 80,
-            bottom: 30,
-            left: 20,
+            right: 10,
+            bottom: 0,
+            left: 0,
           }}
+          className={classes.root}
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis

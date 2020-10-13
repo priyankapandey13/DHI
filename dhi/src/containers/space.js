@@ -67,17 +67,7 @@ function Space() {
 
   return (
     <>
-      <div style={{ margin: "0 auto" }}>
-        <h1
-          style={{
-            textAlign: "center",
-            fontSize: "25px",
-            fontWeight: "bolder",
-          }}
-        >
-          GeoLocator: Click To Find Your Location or click{" "}
-          <a href="/search">here</a> to search for a location
-        </h1>
+      {/* <div className="routercontainer"> */}
 
         <MapGL
           {...viewport}
@@ -103,7 +93,7 @@ function Space() {
             </Marker>
           ))}
         </MapGL>
-      </div>
+      {/* </div> */}
     </>
   );
 }
