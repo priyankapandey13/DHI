@@ -16,14 +16,20 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  appBar: {
+    backgroundColor: "#00000045",
+  },
 }));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar
+        position="Fixed"
+        color="transparent"
+        className={classes.appBar}
+      >
         <Toolbar>
           <IconButton
             edge="start"
