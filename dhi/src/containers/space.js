@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Home.css";
 import "mapbox-gl/dist/mapbox-gl.css";
-import MapGL, { GeolocateControl, Popup } from "react-map-gl";
-import { Marker } from "react-map-gl";
+import MapGL, { GeolocateControl, Marker } from "react-map-gl";
 import PoolSharpIcon from "@material-ui/icons/PoolSharp";
+import { Link } from "react-router-dom";
+import { GlobalStateContext } from "./Home";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicHJpeWFua2FwcyIsImEiOiJja2cyYzFjY3MxZTc4MnlxZm92d2Y4M3poIn0.7Eb13DlMMMXb-_UnsMgcVg";
@@ -14,6 +15,11 @@ const apiURL =
 const style = {};
 
 const geolocateStyle = {};
+
+// const useGlobalState = () => [
+//   React.useContext(GlobalStateContext),
+//   // React.useContext(DispatchStateContext)
+// ];
 
 function Space() {
   const [viewport, setViewport] = useState({
@@ -31,35 +37,24 @@ function Space() {
     setViewport({ ...viewport, transitionDuration: 3000 });
 
   const [position, setPosition] = useState([]);
-  const [PopPosition, setPopPosition] = useState({});
-  const [selectedMarker, setSelectedMarker] = useState(true);
-
-  // const onClick = (event) => {
-  //   const { lngLat } = event;
-
-  //   const newVewport = {
-  //     ...viewport,
-  //     latitude: lngLat.lat,
-  //     longitude: lngLat.lng
-  //   };
-
-  //   setViewport(newVewport);
-  // };
+  const [CurrentGraphInput, SetCurrentGraphInput] = useContext(
+    GlobalStateContext
+  );
 
   async function fetchData() {
     try {
       const response = await fetch(apiURL);
-
       const json = await response.json();
       const markers = [];
 
       const data = json.features;
       const data1 = data.map((item) => {
         const data2 = item.geometry.coordinates.map((coords) => {
-          const coordsarray = coords.map((data) => {
+          const coordsarray = coords.map((data, index) => {
             markers.push({
               latitude: coords[1],
               longitude: coords[0],
+              key: index,
             });
 
             return markers;
@@ -80,33 +75,22 @@ function Space() {
     fetchData();
   }, []);
 
-  const openPopup = () => {
-    setSelectedMarker(true);
-  };
-
-  // const setSelectedMarker = (index) => {
-  //    setState({ selectedIndex: index })
-  // }
-
-  const closePopup = () => {
-    setSelectedMarker(false);
-  };
-
-  const onMapClick = (event) => {
-    setPopPosition({
-      longitude: position.longitude,
-      latitude: position.latitude,
-    });
-  };
-
-  const onMarkerClick = (event) => {
-    alert("You clicked on marker");
-    event.stopPropagation();
-  };
-
-  // onClick={() => this.setState({ popupInfo: null })}
   return (
     <>
+      <div className="showcoordinates">
+        {position.map((location, index) => (
+          <Link
+            to="/time"
+            key={index}
+            onClick={() => {
+              SetCurrentGraphInput([location]);
+              alert("im here");
+            }}
+          >
+            lati : {location.latitude}, longi : {location.longitude}
+          </Link>
+        ))}
+      </div>
       <MapGL
         {...viewport}
         mapboxApiAccessToken={MAPBOX_TOKEN}
@@ -122,21 +106,13 @@ function Space() {
         {position &&
           position.map((location, index) => (
             <>
-              <Popup
-                longitude={location.longitude}
-                latitude={location.latitude}
-                closeButton={true}
-                closeOnClick={selectedMarker}
-              >
-                know more
-              </Popup>
               <Marker
                 latitude={location.latitude}
                 longitude={location.longitude}
                 key={index}
                 draggable
               >
-                <div style={style}>
+                <div style={style} id="testbox">
                   <PoolSharpIcon />
                 </div>
               </Marker>
