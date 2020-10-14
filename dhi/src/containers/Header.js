@@ -25,11 +25,7 @@ export default function ButtonAppBar() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar
-        position="Fixed"
-        color="transparent"
-        className={classes.appBar}
-      >
+      <AppBar position="fixed" color="transparent" className={classes.appBar}>
         <Toolbar>
           <IconButton
             edge="start"
