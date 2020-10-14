@@ -13,21 +13,16 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { makeStyles } from "@material-ui/core/styles";
 
 import Space from "./space";
 
-const apiURL =
-  "https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=55.6761&lon=12.5683";
+// lets suppose this is the array of objects i am getting from my global state.
+const SelectedCordinates = [{ latitude: 55.6761, longitude: 12.5683 }];
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "100%",
-    },
-  },
-}));
+const apiURL = SelectedCordinates.map((coordinates) => {
+  const currentURL = `https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=${coordinates.latitude}&lon=${coordinates.longitude}`;
+  return currentURL;
+});
 
 function convertTime(time) {
   const TimeWithoutPM = parseInt(time.split(":")[0]) + 12;
@@ -42,14 +37,10 @@ function removeExtra00(time) {
 }
 
 function Time() {
-  const [graphdata, setgraphdata] = useState({});
+  const [graphdata, setgraphdata] = useState([]);
   const [graphtime, setgraphtime] = useState({});
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  async function fetchData() {
+  async function fetchTimeData() {
     try {
       const response = await fetch(apiURL);
       const json = await response.json();
@@ -72,7 +63,6 @@ function Time() {
         return weatherdata;
       });
 
-      // Because graphtime itself is an object which has array inside it. That's why push
       const graphTimeData = [];
       graphTimeData.push(graphtime);
 
@@ -95,7 +85,9 @@ function Time() {
     }
   }
 
-  const classes = useStyles();
+  useEffect(() => {
+    fetchTimeData();
+  }, []);
 
   return (
     <Container maxWidth="lg">
@@ -113,7 +105,6 @@ function Time() {
             bottom: 0,
             left: 0,
           }}
-          className={classes.root}
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis

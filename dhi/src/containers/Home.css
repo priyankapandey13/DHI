@@ -1,27 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-:root{
+:root {
   --white: #fff;
-  --grey:rgb(60, 72, 88);
-  --primary: 'Roboto', sans-serif;
-  --h2heading-font:45px;
-  --h3heading-font:25px;
-  --h4heading-font:20px;
-  --small-font:2em;
+  --grey: rgb(60, 72, 88);
+  --primary: "Roboto", sans-serif;
+  --h2heading-font: 45px;
+  --h3heading-font: 25px;
+  --h4heading-font: 20px;
+  --small-font: 2em;
   --center: center;
-  --space15:15vh;
-  --space5:5vh;
+  --space15: 15vh;
+  --space5: 5vh;
 }
 
-
-
-img{
+img {
   width: 100%;
   height: auto;
 }
 
-header{
-  color: #fff !important
+header {
+  color: #fff !important;
 }
 
 .mapboxgl-ctrl-group {
@@ -39,30 +37,29 @@ header{
   padding: 0;
 }
 
-.slidercontainer{
+.slidercontainer {
   background-image: url("../assets/DHI-bg.jpg");
-transform: translate3d(0px, 0px, 0px);
-display: flex;
-padding: 0;
-overflow: hidden;
-position: relative;
-height: 80vh;
-max-height: 1000px;
-align-items: center;
-background-size: cover;
-background-position: center center;
+  transform: translate3d(0px, 0px, 0px);
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  height: 80vh;
+  max-height: 1000px;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
 }
-.contentcontainer{
+.contentcontainer {
   margin: -60px 3vw 0vw !important;
   padding: 5vh 1vw 3vw;
-  /* box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
-border-radius: 6px;
-z-index: 0;
-position: relative;
-background: #fff;
+  border-radius: 6px;
+  z-index: 0;
+  position: relative;
+  background: #fff;
 }
 
-h2{
+h2 {
   font-family: var(--primary);
   font-size: var(--h2heading-font);
   color: var(--grey);
@@ -70,38 +67,60 @@ h2{
   text-align: var(--center);
   margin-bottom: var(--space15);
 }
-h3{
+h3 {
   font-family: var(--primary);
   font-size: var(--h3heading-font);
   color: var(--grey);
   font-weight: 300;
   margin-top: var(--space15);
-  
 }
 
-.routerlinks a:link, .routerlinks a:visited{
+.routerlinks a:link,
+.routerlinks a:visited {
   padding: 1.1em 3em;
   line-height: 3.5em;
-text-decoration: none;
-color: var(--grey);
-border: 1px solid rgb(00, 00, 00, 0.2);
+  text-decoration: none;
+  color: var(--grey);
+  border: 1px solid rgb(00, 00, 00, 0.2);
 }
-.routerlinks a:active, .routerlinks a:hover{
+.routerlinks a:active,
+.routerlinks a:hover {
   color: var(--white);
   background-color: var(--grey);
 }
 
-.routercontainer{
+.routercontainer {
   border: 1px solid rgb(00, 00, 00, 0.2);
   padding: 1.5vw;
-  
 }
-.recharts-wrapper, .recharts-legend-wrapper{
+.recharts-wrapper,
+.recharts-legend-wrapper {
   width: 100% !important;
   margin: 0px;
 }
 
-.timemap{
-max-height: 50vh;
-overflow: hidden;
+.timemap {
+  max-height: 50vh;
+  overflow: hidden;
+}
+
+.showcoordinates {
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+.showcoordinates a:link,
+.showcoordinates a:visited {
+  text-decoration: none;
+  color: var(--grey);
+  border: 1px solid rgb(00, 00, 00, 0.2);
+  padding: 10px 6px;
+  margin: 2px;
+  background-color: var(--white);
+  line-height: 3em;
+}
+
+.showcoordinates a:active,
+.showcoordinates a:hover {
+  background-color: var(--grey);
+  color: var(--white);
 }
