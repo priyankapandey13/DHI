@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { Grid } from "@material-ui/core";
+import { Box, Container, Grid } from "@material-ui/core";
 import DhiTitle from "../assets/dhi-gras.png";
 import Location from "../assets/location.png";
 import Scholar from "../assets/scholar.png";
@@ -9,18 +9,14 @@ import Diamond from "../assets/diamond.png";
 
 export default function Slider() {
   return (
-    <Grid container className="slidercontainer">
-      <Grid item xs={2}>
-        &nbsp;
+    <div maxWidth="lg" className="slidercontainer">
+      <Container>
+      <Grid container>
+      <Grid component="div" xl={6} md={6} sm={6} xs={12}>
+        <img alt="Dhi Title" src={DhiTitle} className="SliderHeading" />
       </Grid>
-      <Grid item xs={3}>
-        <img alt="Dhi Title" src={DhiTitle} />
-      </Grid>
-      <Grid item xs={2}>
-        &nbsp;
-      </Grid>
-      <Grid item xs={4}>
-        <Carousel
+      <Grid component="div" xl={6} md={6} sm={6} xs={12}>
+      <Carousel
           autoPlay={true}
           showArrows={false}
           showThumbs={false}
@@ -41,9 +37,9 @@ export default function Slider() {
           </div>
         </Carousel>
       </Grid>
-      <Grid item xs={1}>
-        &nbsp;
       </Grid>
-    </Grid>
+      </Container>
+      </div>
+
   );
 }
