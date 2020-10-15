@@ -51,10 +51,10 @@ header {
   background-size: cover;
   background-position: center center;
 }
-.SliderHeading{
-  width:70%;
+.SliderHeading {
+  width: 70%;
   position: relative;
-  top:30%;
+  top: 30%;
 }
 .contentcontainer {
   margin: -60px 3vw 0vw !important;
@@ -140,10 +140,13 @@ h3 {
   line-height: 1em;
 }
 
-.recharts-surface{
+.recharts-surface {
   width: 100% !important;
 }
-.timecordinates{
+.timecordinates {
   text-align: center;
   margin: 28px 0px 6px;
+}
+.carousel .slide {
+  background-color: transparent !important;
 }
