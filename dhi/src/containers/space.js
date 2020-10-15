@@ -17,8 +17,8 @@ const style = {};
 const geolocateStyle = {};
 
 function Space() {
-  const [SetCurrentGraphInputLati] = useContext(GlobalStateContextLati);
-  const [SetCurrentGraphInputLongi] = useContext(GlobalStateContextLongi);
+  const [CurrentGraphInputLati, SetCurrentGraphInputLati] = useContext( GlobalStateContextLati );
+  const [CurrentGraphInputLongi, SetCurrentGraphInputLongi] = useContext( GlobalStateContextLongi );
 
   const [viewport, setViewport] = useState({
     width: "100%",
