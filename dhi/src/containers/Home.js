@@ -3,16 +3,16 @@ import "./Home.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./Header";
 import CarouselShow from "./CarouselShow";
-import { Container, Box, Grid } from "@material-ui/core";
+import { Container, Box } from "@material-ui/core";
 import Space from "./space";
 import Time from "./time";
 
-const globalState = [{ latitude: 0, longitude: 0 }];
-
-export const GlobalStateContext = React.createContext(globalState);
+export const GlobalStateContextLati = React.createContext(0);
+export const GlobalStateContextLongi = React.createContext(0);
 
 function Home() {
-  const [CurrentGraphInput, SetCurrentGraphInput] = useState(globalState);
+  const [CurrentGraphInputLati, SetCurrentGraphInputLati] = useState(0);
+  const [CurrentGraphInputLongi, SetCurrentGraphInputLongi] = useState(0);
 
   return (
     <>
@@ -40,24 +40,30 @@ function Home() {
             </p>
           </Box>
           <Box>
-            <GlobalStateContext.Provider value={[globalState]}>
-              <Router>
-                <div className="routerlinks">
-                  <Link to="/">Space</Link>
-                  <Link to="/time">Time</Link>
-                </div>
-                <div className="routercontainer">
-                  <Switch>
-                    <Route path="/Time">
-                      <Time />
-                    </Route>
-                    <Route path="/">
-                      <Space />
-                    </Route>
-                  </Switch>
-                </div>
-              </Router>
-            </GlobalStateContext.Provider>
+            <GlobalStateContextLati.Provider
+              value={[CurrentGraphInputLati, SetCurrentGraphInputLati]}
+            >
+              <GlobalStateContextLongi.Provider
+                value={[CurrentGraphInputLongi, SetCurrentGraphInputLongi]}
+              >
+                <Router>
+                  <div className="routerlinks">
+                    <Link to="/">Space</Link>
+                    <Link to="/time">Time</Link>
+                  </div>
+                  <div className="routercontainer">
+                    <Switch>
+                      <Route path="/Time">
+                        <Time />
+                      </Route>
+                      <Route path="/">
+                        <Space />
+                      </Route>
+                    </Switch>
+                  </div>
+                </Router>
+              </GlobalStateContextLongi.Provider>
+            </GlobalStateContextLati.Provider>
           </Box>
         </Container>
       </Box>

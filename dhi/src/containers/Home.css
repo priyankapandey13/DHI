@@ -10,6 +10,7 @@
   --small-font: 2em;
   --center: center;
   --space15: 15vh;
+  --space10: 10vh;
   --space5: 5vh;
 }
 
@@ -65,14 +66,14 @@ h2 {
   color: var(--grey);
   font-weight: 300;
   text-align: var(--center);
-  margin-bottom: var(--space15);
+  margin-bottom: var(--space10);
 }
 h3 {
   font-family: var(--primary);
   font-size: var(--h3heading-font);
   color: var(--grey);
   font-weight: 300;
-  margin-top: var(--space15);
+  margin-top: var(--space10);
 }
 
 .routerlinks a:link,
@@ -108,19 +109,28 @@ h3 {
   max-height: 30vh;
   overflow-y: scroll;
 }
+
 .showcoordinates a:link,
 .showcoordinates a:visited {
+  display: inline-block;
   text-decoration: none;
   color: var(--grey);
   border: 1px solid rgb(00, 00, 00, 0.2);
-  padding: 10px 6px;
+  padding: 12px 20px;
   margin: 2px;
   background-color: var(--white);
-  line-height: 3em;
+  line-height: 1em;
+  font-size: 13px;
 }
 
 .showcoordinates a:active,
 .showcoordinates a:hover {
   background-color: var(--grey);
   color: var(--white);
+}
+.showcoordinates a span {
+  width: 12px;
+  overflow-x: hidden;
+  display: inline-block;
+  line-height: 1em;
 }

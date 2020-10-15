@@ -4,7 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import MapGL, { GeolocateControl, Marker } from "react-map-gl";
 import PoolSharpIcon from "@material-ui/icons/PoolSharp";
 import { Link } from "react-router-dom";
-import { GlobalStateContext } from "./Home";
+import { GlobalStateContextLati, GlobalStateContextLongi } from "./Home";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicHJpeWFua2FwcyIsImEiOiJja2cyYzFjY3MxZTc4MnlxZm92d2Y4M3poIn0.7Eb13DlMMMXb-_UnsMgcVg";
@@ -16,12 +16,10 @@ const style = {};
 
 const geolocateStyle = {};
 
-// const useGlobalState = () => [
-//   React.useContext(GlobalStateContext),
-//   // React.useContext(DispatchStateContext)
-// ];
-
 function Space() {
+  const [SetCurrentGraphInputLati] = useContext(GlobalStateContextLati);
+  const [SetCurrentGraphInputLongi] = useContext(GlobalStateContextLongi);
+
   const [viewport, setViewport] = useState({
     width: "100%",
     height: 400,
@@ -37,9 +35,6 @@ function Space() {
     setViewport({ ...viewport, transitionDuration: 3000 });
 
   const [position, setPosition] = useState([]);
-  const [CurrentGraphInput, SetCurrentGraphInput] = useContext(
-    GlobalStateContext
-  );
 
   async function fetchData() {
     try {
@@ -83,11 +78,12 @@ function Space() {
             to="/time"
             key={index}
             onClick={() => {
-              SetCurrentGraphInput([location]);
-              alert("im here");
+              SetCurrentGraphInputLati(location.latitude);
+              SetCurrentGraphInputLongi(location.longitude);
             }}
           >
-            lati : {location.latitude}, longi : {location.longitude}
+            {/* lati : <span>{location.latitude}</span>,<br/> longi : <span>{location.longitude}</span> */}
+            Location: {index + 1}
           </Link>
         ))}
       </div>
