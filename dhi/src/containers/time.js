@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import "./Home.css";
 import { Box, Container } from "@material-ui/core";
+import { GlobalStateContextLati, GlobalStateContextLongi } from "./Home";
 
 import {
   ComposedChart,
@@ -14,15 +15,7 @@ import {
   Legend,
 } from "recharts";
 
-import Space from "./space";
-
-// lets suppose this is the array of objects i am getting from my global state.
-const SelectedCordinates = [{ latitude: 55.6761, longitude: 12.5683 }];
-
-const apiURL = SelectedCordinates.map((coordinates) => {
-  const currentURL = `https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=${coordinates.latitude}&lon=${coordinates.longitude}`;
-  return currentURL;
-});
+const SelectedCordinates = [{ latitude: 0, longitude: 0 }];
 
 function convertTime(time) {
   const TimeWithoutPM = parseInt(time.split(":")[0]) + 12;
@@ -37,63 +30,72 @@ function removeExtra00(time) {
 }
 
 function Time() {
+  const [CurrentGraphInputLati] = useContext(GlobalStateContextLati);
+  const [CurrentGraphInputLongi] = useContext(GlobalStateContextLongi);
   const [graphdata, setgraphdata] = useState([]);
-  const [graphtime, setgraphtime] = useState({});
 
-  async function fetchTimeData() {
-    try {
-      const response = await fetch(apiURL);
-      const json = await response.json();
+  const apiURL = `https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=${CurrentGraphInputLati}&lon=${CurrentGraphInputLongi}`;
 
-      const timelist = json.properties.timeseries;
+  const fetchTimeDataCallback = useCallback(() => {
+    async function fetchTimeData() {
+      try {
+        const response = await fetch(apiURL);
+        const json = await response.json();
 
-      const timearray = timelist.map((item) => {
-        const date = new Date(item.time);
-        const timeValueWithsecs = date.toLocaleTimeString();
-        const convert12To24Hrs = timeValueWithsecs.includes("PM")
-          ? convertTime(timeValueWithsecs)
-          : removeExtra00(timeValueWithsecs);
-        return convert12To24Hrs;
-      });
-      setgraphtime(timearray);
+        const weathercycle = json.properties.timeseries;
+        const allDataObjArray = weathercycle.map((item) => {
+          const weatherdata = item.data.instant.details;
+          return weatherdata;
+        });
 
-      const weathercycle = json.properties.timeseries;
-      const allDataObjArray = weathercycle.map((item) => {
-        const weatherdata = item.data.instant.details;
-        return weatherdata;
-      });
+        const timelist = json.properties.timeseries;
 
-      const graphTimeData = [];
-      graphTimeData.push(graphtime);
+        const timearray = timelist.map((item) => {
+          const date = new Date(item.time);
+          const timeValueWithsecs = date.toLocaleTimeString();
+          const convert12To24Hrs = timeValueWithsecs.includes("PM")
+            ? convertTime(timeValueWithsecs)
+            : removeExtra00(timeValueWithsecs);
+          return convert12To24Hrs;
+        });
 
-      const fullDataWithTime = allDataObjArray.map((otherdetails, index) => {
-        graphTimeData.map((timevalue, timeindex) => {
-          if (index === timeindex) {
-            otherdetails.time = timevalue;
-          }
+        const graphTimeData = [];
+        graphTimeData.push(timearray);
+
+        const fullDataWithTime = allDataObjArray.map((otherdetails, index) => {
+          graphTimeData.map((timevalue, timeindex) => {
+            if (index === timeindex) {
+              otherdetails.time = timevalue;
+            }
+            return otherdetails;
+          });
+
           return otherdetails;
         });
 
-        return otherdetails;
-      });
+        const FinalData = fullDataWithTime.slice(0, 10);
 
-      const FinalData = fullDataWithTime.slice(0, 10);
+        setgraphdata(FinalData);
 
-      setgraphdata(FinalData);
-    } catch (err) {
-      alert(err);
+        SelectedCordinates.forEach((readings) => {
+          readings.latitude = CurrentGraphInputLati;
+          readings.longitude = CurrentGraphInputLongi;
+        });
+      } catch (err) {
+        alert(err);
+      }
     }
-  }
 
-  useEffect(() => {
     fetchTimeData();
   }, []);
 
+  useEffect(() => {
+    fetchTimeDataCallback();
+  }, [fetchTimeDataCallback]);
+
   return (
     <Container maxWidth="lg">
-      <Box component="div" className="timemap">
-        <Space />
-      </Box>
+      <Box component="div" className="timemap"></Box>
       <Box component="div">
         <ComposedChart
           width={840}
@@ -129,6 +131,11 @@ function Time() {
           <Bar dataKey="cloud_area_fraction_low" barSize={20} fill="#413ea0" />
           <Line type="monotone" dataKey="relative_humidity" stroke="#ff7300" />
         </ComposedChart>
+
+        <p>
+          Hi the latitude is : {CurrentGraphInputLati}, and the longitude is :{" "}
+          {CurrentGraphInputLongi}
+        </p>
       </Box>
     </Container>
   );
