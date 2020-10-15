@@ -118,7 +118,7 @@ function Time() {
             }}
           />
           <YAxis
-            label={{ value: "time", angle: -90, position: "insideLeft" }}
+            label={{ value: "Value (%)", angle: -90, position: "insideLeft" }}
           />
           <Tooltip />
           <Legend />
@@ -132,10 +132,10 @@ function Time() {
           <Line type="monotone" dataKey="relative_humidity" stroke="#ff7300" />
         </ComposedChart>
 
-        <p>
-          Hi the latitude is : {CurrentGraphInputLati}, and the longitude is :{" "}
+        <div className="timecordinates">
+          This chart is for these coordinates, latitude is : {CurrentGraphInputLati}, and the longitude is :{" "}
           {CurrentGraphInputLongi}
-        </p>
+        </div>
       </Box>
     </Container>
   );

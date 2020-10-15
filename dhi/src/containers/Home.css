@@ -51,6 +51,11 @@ header {
   background-size: cover;
   background-position: center center;
 }
+.SliderHeading{
+  width:70%;
+  position: relative;
+  top:30%;
+}
 .contentcontainer {
   margin: -60px 3vw 0vw !important;
   padding: 5vh 1vw 3vw;
@@ -133,4 +138,12 @@ h3 {
   overflow-x: hidden;
   display: inline-block;
   line-height: 1em;
+}
+
+.recharts-surface{
+  width: 100% !important;
+}
+.timecordinates{
+  text-align: center;
+  margin: 28px 0px 6px;
 }
