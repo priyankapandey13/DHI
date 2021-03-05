@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { Box, Container, Grid } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import DhiTitle from "../assets/dhi-gras.png";
 import Location from "../assets/location.png";
 import Scholar from "../assets/scholar.png";
