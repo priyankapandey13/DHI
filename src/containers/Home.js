@@ -15,7 +15,7 @@ function Home() {
   const [CurrentGraphInputLongi, SetCurrentGraphInputLongi] = useState(0);
 
   return (
-    <>
+    <div>
       <Header />
       <CarouselShow />
       <Box
@@ -67,7 +67,7 @@ function Home() {
           </Box>
         </Container>
       </Box>
-    </>
+    </div>
   );
 }
 export default Home;

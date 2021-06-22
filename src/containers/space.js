@@ -75,7 +75,7 @@ function Space() {
   }, []);
 
   return (
-    <>
+    <div>
       <div className="showcoordinates">
         {position.map((location, index) => (
           <Link
@@ -105,7 +105,7 @@ function Space() {
 
         {position &&
           position.map((location, index) => (
-            <>
+            
               <Marker
                 latitude={location.latitude}
                 longitude={location.longitude}
@@ -116,10 +116,10 @@ function Space() {
                   <PoolSharpIcon />
                 </div>
               </Marker>
-            </>
+            
           ))}
       </MapGL>
-    </>
+    </div>
   );
 }
 
