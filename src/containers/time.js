@@ -18,6 +18,7 @@ import {
 const SelectedCordinates = [{ latitude: 0, longitude: 0 }];
 
 function convertTime(time) {
+  // eslint-disable-next-line
   const TimeWithoutPM = parseInt(time.split(":")[0]) + 12;
   const Time24hrWithPM = TimeWithoutPM + " pm";
   return Time24hrWithPM;

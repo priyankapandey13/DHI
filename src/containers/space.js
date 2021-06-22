@@ -17,9 +17,11 @@ const style = {};
 const geolocateStyle = {};
 
 function Space() {
+  // eslint-disable-next-line
   const [CurrentGraphInputLati, SetCurrentGraphInputLati] = useContext(
     GlobalStateContextLati
   );
+  // eslint-disable-next-line
   const [CurrentGraphInputLongi, SetCurrentGraphInputLongi] = useContext(
     GlobalStateContextLongi
   );
