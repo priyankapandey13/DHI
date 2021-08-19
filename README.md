@@ -1,8 +1,11 @@
-# DHI
-Short assignment for DHI
+# Swimming Pool App
+### This one page app shows the available swimming pools in Copenhagen on map. And if clicked on the map location icon it will show the details of that particular swimming pool.</br>
+### If user wants to know more about the pool they can click on the 'Search link' on the popup and they will be redirected on their website for the plans and availability.</br>
+### If user wants to know what will be the weather of that pool area they can click on the 'See graph' link on the popup and the weather graph for coming 10 hours will be shown on the bar graph.
+### This app can be seen in action on this link : https://swimming-pools.netlify.app/
 
 # Requirement
-create a simple React web app that showcases data in physical space (on a map) as well as time (as in changes over time on a graph) in an informative way. This will be used to provide a resident of the city of Copenhagen with insights relevant to their life in the city
+create a simple React web app that showcases data in physical Pools (on a map) as well as weather(as in changes over time on a graph) in an informative way. This will be used to provide a resident of the city of Copenhagen with insights relevant to their life in the city
 
 # Design consideration:  
 
@@ -17,8 +20,3 @@ create a simple React web app that showcases data in physical space (on a map) a
 1) First you need to clone this repository in your local machine.
 2) Run "npm install" to install npm with other dependencies.
 3) Run "npm start".
-
-# Open Issues:
-1) Integration pending with map marker.
-2) Page alignment 
-3) Input location for updated graph details.
