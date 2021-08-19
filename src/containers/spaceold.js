@@ -36,7 +36,7 @@ function Space(props) {
   //   GlobalStateContextLongi
   // );
 
-  const {data, onClick} = props;
+  // const {data, onClick} = props;
   // data will contain lati ang longi of the location 
   // onclick event
   
