@@ -37,7 +37,7 @@ export default function ButtonAppBar() {
           </IconButton>
 
           <Typography variant="h6" className={classes.title}>
-            DHI Assignment
+          Swimming Pools
           </Typography>
         </Toolbar>
       </AppBar>

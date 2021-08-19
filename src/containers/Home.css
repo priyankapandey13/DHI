@@ -28,12 +28,12 @@ header {
   margin: 50px;
   padding: 10px;
 }
-.mapboxgl-marker {
+/* .mapboxgl-marker {
   color: #fff;
   background-color: #1978c8;
   border-radius: 50%;
   padding: 4px 6px;
-}
+} */
 .mapboxgl-user-location-dot {
   padding: 0;
 }

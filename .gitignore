@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+/src/testsrc
+/src/testsrc/cities
+/src/containers/cities
+/src/containers/city-info++
+/src/containers/control-panel
+/src/containers/Home-old
+/src/containers/pins++
+/src/containers/spaceold
+/src/containers/time+

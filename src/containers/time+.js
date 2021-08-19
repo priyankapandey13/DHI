@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 import "./Home.css";
 import { Box, Container } from "@material-ui/core";
-// import { GlobalStateContextLati, GlobalStateContextLongi } from "./Home";
+import { GlobalStateContextLati, GlobalStateContextLongi } from "./Home";
 
 import {
   ComposedChart,
@@ -30,19 +30,10 @@ function removeExtra00(time) {
   return TimeWithAM;
 }
 
-function Time(props) {
-  // console.log(props);
-  // const [CurrentGraphInputLati] = useContext(GlobalStateContextLati);
-  // const [CurrentGraphInputLongi] = useContext(GlobalStateContextLongi);
+function Time() {
+  const [CurrentGraphInputLati] = useContext(GlobalStateContextLati);
+  const [CurrentGraphInputLongi] = useContext(GlobalStateContextLongi);
   const [graphdata, setgraphdata] = useState([]);
-
-  // const CurrentGraphInputLati = props.CurrentLocationfromchild[0];
-  // const CurrentGraphInputLongi =props.CurrentLocationfromchild[1];
-
-  // props.Position[0]
-  const CurrentGraphInputLati = (props.CurrentLocationfromchild === undefined) ? 55.65454851341293 : props.CurrentLocationfromchild[0] ;
-  const CurrentGraphInputLongi = (props.CurrentLocationfromchild === undefined) ? 12.64922257742978 : props.CurrentLocationfromchild[1];
-  // const CurrentGraphInputLati = 55.654548513412 78;
 
   const apiURL = `https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=${CurrentGraphInputLati}&lon=${CurrentGraphInputLongi}`;
 
