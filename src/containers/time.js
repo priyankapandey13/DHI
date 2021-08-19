@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Home.css";
 import { Box, Container } from "@material-ui/core";
 // import { GlobalStateContextLati, GlobalStateContextLongi } from "./Home";
@@ -98,7 +98,8 @@ function Time(props) {
 
     fetchTimeData();
   
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ ]);
 
   useEffect(() => {
     fetchTimeDataCallback();

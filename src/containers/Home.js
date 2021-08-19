@@ -22,13 +22,13 @@ function FetchArray(event) {
   .then((data) => data.features);
 }
 
-function handlechildclick(props) {
-  // setColor(color);
+// function handlechildclick(props) {
+//   // setColor(color);
   
-  alert(props);
-//  alert(`handlechildclick is called ${popupInfo.latitude} + ${popupInfo.longitude}`);
+//   alert(props);
+// //  alert(`handlechildclick is called ${popupInfo.latitude} + ${popupInfo.longitude}`);
  
-}
+// }
 
 function Home() {
   
