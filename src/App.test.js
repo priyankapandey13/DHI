@@ -4,6 +4,6 @@ import Home from './containers/Home';
 
 test('renders learn react link', () => {
   const { getByText } = render(<Home />);
-  const linkElement = getByText(/learn react/i);
+  const linkElement = getByText(/Welcome To Swimming Pool App/i);
   expect(linkElement).toBeInTheDocument();
 });
