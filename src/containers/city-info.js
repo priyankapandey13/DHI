@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { Redirect, Link } from "react-router-dom";
 
 function CityInfo(props) {
   const {info} = props;

@@ -22,11 +22,6 @@ function FetchArray(event) {
   .then((data) => data.features);
 }
 
-// function handlechildclick(color) {
-//   // setColor(color);
-//  alert('handlechildclick is called');
-// }
-
 function handlechildclick(props) {
   // setColor(color);
   

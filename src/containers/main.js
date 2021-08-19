@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import MapGL, {
   Popup,
 } from 'react-map-gl';
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 // import ControlPanel from './control-panel';
 
 import Pins from './pins';
