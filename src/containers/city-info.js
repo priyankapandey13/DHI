@@ -18,13 +18,14 @@ function CityInfo(props) {
   return (
     <div>
       <div>
-        {displayName} || &nbsp;&nbsp;{' '}
-        <a
+        <h3>{displayName}</h3>
+        
+        {/* <a
           target="_new"
           href={info.PoolInfo.link}
         >
-         SearchLink
-        </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         Visit Website
+        </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
         {/* <a
           target="_new"
           href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${displayName}`}
@@ -38,12 +39,16 @@ function CityInfo(props) {
           {info.PoolInfo.e_mail} || {info.PoolInfo.post_nr}
       </div>
       <div>
-        {info.PoolInfo.adresse} || <Link to="/time" onClick={props.onClick} >See Graph</Link>
+        {info.PoolInfo.adresse}
       </div>
+      
       <div>
+      <a target="_new" href={info.PoolInfo.link}> Visit Website</a> || <Link to="/time" onClick={props.onClick} >See Graph</Link>
+      </div>
+      {/* <div>
         {info.latitude}
         || {info.longitude}
-      </div>
+      </div> */}
 
       {/* <img width={240} src={info.image} alt="icon" /> */}
     </div>

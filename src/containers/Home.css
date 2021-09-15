@@ -12,6 +12,7 @@
   --space15: 15vh;
   --space10: 10vh;
   --space5: 5vh;
+  --space2: 2vh;
 }
 
 img {
@@ -150,4 +151,8 @@ h3 {
 }
 .carousel .slide {
   background-color: transparent !important;
+}
+
+.mapboxgl-popup-content h3{
+margin-top: var(--space2);
 }
